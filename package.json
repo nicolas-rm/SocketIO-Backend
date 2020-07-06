@@ -1,0 +1,22 @@
+{
+  "name": "socketsIO-backend",
+  "version": "1.0.0",
+  "description": "Backend De Una Aplicacion De Practica En Tiempo Real (Sockets) Con Servicios REST.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolás Rincón Mújica",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/morgan": "^1.9.1",
+    "@types/socket.io": "^2.1.8"
+  }
+}
