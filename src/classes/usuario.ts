@@ -8,9 +8,10 @@ export class Usuario {
 
     // Sala
     public sala: string;
+
     constructor(id: string) {
         this.id = id;
-        this.nombre = 'sin-nombre',
-            this.sala = 'sin-sala';
+        this.nombre = 'sin-nombre';
+        this.sala = 'sin-sala';
     }
 }

@@ -52,9 +52,11 @@ export default class Server {
             // Mostrar ID Del Socket
             console.log(cliente.id);
 
+            // Conectar Cliente
+            socket.conectarCliente(cliente);
+
             // Configurar Usuario
             socket.configurarUsuario(cliente, this.io);
-            
 
             // Recibir Mensajes
             socket.mensaje(cliente, this.io);

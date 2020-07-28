@@ -1,6 +1,16 @@
 
 import { Socket } from 'socket.io';
 import socketIO from 'socket.io';
+import { UsuarioLista } from '../classes/usuario-lista';
+import { Usuario } from '../classes/usuario';
+
+export const usuariosConectados = new UsuarioLista();
+
+export const conectarCliente = (cliente: Socket) => {
+    const usuario = new Usuario(cliente.id);
+
+    usuariosConectados.agregar(usuario);
+}
 
 // Desconectar Un Cliente
 export const desconectar = (cliente: Socket) => {
@@ -8,6 +18,7 @@ export const desconectar = (cliente: Socket) => {
     // Detecta El Eveneto De Desconeccion
     cliente.on('disconnect', () => {
         console.log('Cliente Desconectado.');
+        usuariosConectados.borrarUsuario(cliente.id);
     });
 };
 
@@ -22,10 +33,11 @@ export const mensaje = (cliente: Socket, io: socketIO.Server) => {
     });
 };
 
-// Configura El Nombre Del Usuario Que Inicio Sesion
+// Configura El  Usuario Que Inicio Sesion
 export const configurarUsuario = (cliente: Socket, io: SocketIO.Server) => {
     // Recibe Datos Por El Evento configurar-usuario: Nombre De Usuario A Utilizar
     cliente.on('configurar-usuario', (payload: { nombre: string }, respuesta: Function) => {
+        usuariosConectados.actualizarNombre(cliente.id, payload.nombre);    
         console.log('Configurando Nombre Del Cliente: ', payload.nombre);
 
         // Poder Enviar Errores / Respuestas
