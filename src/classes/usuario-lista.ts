@@ -10,7 +10,7 @@ export class UsuarioLista {
     // Agregar Un Usuario
     public agregar(usuario: Usuario) {
         this.lista.push(usuario);
-        console.log('Agregando Usuario: ', usuario);
+        // console.log('Agregando Usuario: ', usuario);
         return usuario;
     }
 
@@ -22,13 +22,13 @@ export class UsuarioLista {
                 break;
             }
         }
-        console.log(' ======== Actualizando Usuario ========');
-        console.log(this.lista);
+        // console.log(' ======== Actualizando Usuario ========');
+        // console.log(this.lista);
     }
 
     // Obtener Lista De Usuarios
     public getLista() {
-        return this.lista;
+        return this.lista.filter((usuario => usuario.nombre !== 'sin-nombre'));
     }
 
     // Obtener Usuario
