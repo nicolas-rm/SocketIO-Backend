@@ -58,7 +58,7 @@ export const usuariosActivos = (cliente: Socket, io: SocketIO.Server) => {
 
     cliente.on('usuarios-activos', () => {
         // console.log('\nPidiendo Informacion, Cliente: ', cliente.id);
-        io.in(cliente.id).emit('usuarios-activos', usuariosConectados.getLista());
+        io.to(cliente.id).emit('usuarios-activos', usuariosConectados.getLista());
     });
 }
 
